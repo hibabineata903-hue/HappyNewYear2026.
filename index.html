@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rimah❤️Momen</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #2c003e, #7a0b6f);
+    color: #fff;
+    overflow-x: hidden;
+    direction: rtl;
+  }
+
+  .stars {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 2s infinite alternate;
+  }
+
+  @keyframes twinkle {
+    from { opacity: 0.3; transform: scale(0.8);}
+    to { opacity: 1; transform: scale(1.2);}
+  }
+
+  .header {
+    text-align: center;
+    padding: 50px 20px 20px 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .names {
+    font-size: 3em;
+    font-weight: bold;
+    color: #ff5ca2;
+    text-shadow: 0 0 10px #ff5ca2, 0 0 20px #ff79b0;
+    margin-bottom: 20px;
+    animation: glow 2s infinite alternate;
+  }
+
+  @keyframes glow {
+    from { text-shadow: 0 0 10px #ff5ca2, 0 0 20px #ff79b0;}
+    to { text-shadow: 0 0 20px #ff9ec4, 0 0 30px #ffb6d9;}
+  }
+
+  .main-text {
+    font-size: 1.5em;
+    color: #fff0f5;
+    animation: fadeIn 3s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0;}
+    to { opacity: 1;}
+  }
+
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 40px 20px;
+    gap: 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .card {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 20px;
+    width: 250px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    color: #ffe0f0;
+    text-align: center;
+  }
+
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px #ff5ca2;
+  }
+
+  .card p {
+    margin: 10px 0 10px 0;
+    min-height: 50px;
+    text-align: center;
+    line-height: 1.5em;
+  }
+
+  .card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 10px;
+  }
+
+  /* الرسالة المخفية */
+  .hidden-message {
+    display: none;
+    margin-top: 10px;
+    color: #ffd6e8;
+    font-size: 1em;
+    text-align: center;
+    line-height: 1.5em;
+    transition: all 0.3s ease;
+  }
+
+  .card.active .hidden-message {
+    display: block;
+    animation: glowText 1s ease-in-out;
+  }
+
+  @keyframes glowText {
+    0% { text-shadow: 0 0 5px #ff79b0; }
+    50% { text-shadow: 0 0 15px #ff79b0, 0 0 20px #ff5ca2; }
+    100% { text-shadow: 0 0 5px #ff79b0; }
+  }
+
+  .special {
+    text-align: center;
+    padding: 40px 20px;
+    z-index: 1;
+    position: relative;
+  }
+
+  .special .feature {
+    display: inline-block;
+    background: rgba(255,255,255,0.1);
+    padding: 10px 15px;
+    margin: 10px;
+    border-radius: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .special .feature:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px #ff79b0;
+  }
+
+  .message {
+    text-align: center;
+    padding: 50px 20px;
+    font-size: 1.2em;
+    color: #ffd6e8;
+    text-shadow: 0 0 5px #ff79b0;
+    animation: fadeIn 3s ease-in-out;
+    z-index: 1;
+    position: relative;
+  }
+
+  .music-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(255,255,255,0.2);
+    border: none;
+    border-radius: 50%;
+    padding: 15px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 1.5em;
+    z-index: 2;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .music-btn:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 15px #ff79b0;
+  }
+
+  @media (max-width: 600px) {
+    .cards { flex-direction: column; align-items: center; }
+    .card { width: 80%; }
+    .names { font-size: 2.2em; }
+  }
+</style>
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+
+<div class="header">
+  <div class="names">Rimah ❤️ Momen</div>
+  <div class="main-text">عام جديد سعيد <br>2026 إلى من يملك قلبي </div>
+</div>
+
+<div class="cards">
+  <div class="card" onclick="toggleMessage(this)">
+    <strong>أول يوم تعرفنا فيه</strong>
+    <p class="typing" data-text="اليوم اللي حكيت لي فيه، قلبي همس: 'البداية الأبدية'."></p>
+    <p class="hidden-message">رسالة سرية: كل يوم بجنبك بحس حياتي أحلى وكل لحظة معك مليانة حب وفرح… ❤️</p>
+    <img src="بنوتي.jpeg" alt="أول يوم">
+  </div>
+  <div class="card" onclick="toggleMessage(this)">
+    <strong>أول ضحكة</strong>
+    <p class="typing" data-text="ضحكتك الأولى أنارت عالمي مثل النجوم في الليل."></p>
+    <p class="hidden-message">رسالة سرية: الضحكة اللي بتطلع منك تملأ قلبي سعادة وفرح كل يوم 🌟</p>
+    <img src="../remah2026/كلام حلو.jpg" alt="أول ضحكة">
+  </div>
+  <div class="card" onclick="toggleMessage(this)">
+    <strong>أول مكالمة طويلة</strong>
+    <p class="typing" data-text="حديثنا لساعات جعلني أعلم كم أنت مثالي لي."></p>
+    <p class="hidden-message">رسالة سرية: مكالماتنا الطويلة كانت أحلى أوقات حياتي 💖</p>
+    <img src="مكالمه.jpg" alt="أول مكالمة">
+  </div>
+</div>
+
+
+
+<div class="message">
+مع بداية سنة 2026 حبيت أوقف شوي وأحكي لك من قلبي قد إيش وجودك بحياتي فرق معي وقد إيش أنا ممتنة لكل لحظة جمعتني فيك السنة اللي راحت ما كانت سهلة دايمًا بس وجودك كان يخلي كل شي أهون وكل تعب يروح لما أسمع صوتك أو أحس بقربك أنت مش بس حبيبي أنت الأمان اللي أرتاح فيه والضحكة اللي تطلع من قلبي بدون تفكير والدعم اللي أحتاجه وقت الضعف
+أتمنى السنة الجديدة تكون إلنا بداية أحلى وأقوى نحقق فيها أحلامنا خطوة خطوة ونكبر مع بعض ونتجاوز أي شي يوقف بطريقنا أنا بتمنى لك سنة مليانة نجاح وراحة بال وضحك من القلب وتكون كل أيامك قريبة من اللي بتتمناه وأنا بتمنى كمان أكون سبب من أسباب سعادتك وأكون جنبك بكل وقت تحتاجني فيه
+وعد مني إني أظل أحبك بنفس الشغف وأكثر وأحافظ عليك وعلى حبنا وأختارك كل يوم من جديد مهما تغيرت الأيام كل سنة وأنت حبي وكل سنة وإنت أجمل شي صار بحياتي سنة 2026 بإذن الله بتكون أحلى لأنك فيها 🤍✨
+</div>
+
+<audio id="romanticSong" loop>
+  <source src="Albumaty.Com_fdl_shakr_ahli_rsmh-[AudioTrimmer.com].mp3" type="audio/mpeg">
+</audio>
+
+<button class="music-btn" onclick="toggleSong()">🎵</button>
+
+<script defer>
+document.addEventListener('DOMContentLoaded', function() {
+  // Typing Effect للكروت
+  const typingElements = document.querySelectorAll('.typing');
+  typingElements.forEach(el => {
+    const text = el.dataset.text;
+    let i = 0;
+    function type() {
+      if(i < text.length){
+        el.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(type, 50);
+      }
+    }
+    type();
+  });
+
+  // النجوم
+  const starsContainer = document.getElementById('stars');
+  for(let i=0; i<100; i++){
+    let star = document.createElement('div');
+    star.className = 'star';
+    star.style.top = Math.random() * 100 + '%';
+    star.style.left = Math.random() * 100 + '%';
+    star.style.width = star.style.height = Math.random() * 3 + 1 + 'px';
+    starsContainer.appendChild(star);
+  }
+});
+
+// تفعيل الموسيقى
+function toggleSong() {
+  const song = document.getElementById('romanticSong');
+  if(song.paused) { song.play(); }
+  else { song.pause(); }
+}
+
+// تفعيل ظهور الرسائل المخفية
+function toggleMessage(card) {
+  card.classList.toggle('active');
+}
+</script>
+
+</body>
+</html>
